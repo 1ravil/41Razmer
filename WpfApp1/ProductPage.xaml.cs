@@ -23,6 +23,10 @@ namespace WpfApp1
         public ProductPage()
         {
             InitializeComponent();
+
+            var currentProduct = Ibakov_DBEntities.GetContext().Product.ToList();
+
+            ProductListView.ItemsSource = currentProduct;
         }
     }
 }

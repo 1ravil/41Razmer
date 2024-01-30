@@ -70,6 +70,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>IbakovModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Manager.cs" />
     <Compile Include="Order.cs">
       <DependentUpon>IbakovModel.tt</DependentUpon>
     </Compile>
@@ -135,6 +136,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EntityDeploy Include="IbakovModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -143,6 +145,7 @@
     <None Include="IbakovModel.edmx.diagram">
       <DependentUpon>IbakovModel.edmx</DependentUpon>
     </None>
+    <None Include="imagesphoto\Товар_import_Обувь.xlsx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -153,28 +156,38 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\picture.png" />
+    <Resource Include="imagesphoto\picture.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\logo.png" />
+    <Resource Include="imagesphoto\logo.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\icon.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="IbakovModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>IbakovModel.Context.cs</LastGenOutput>
       <DependentUpon>IbakovModel.edmx</DependentUpon>
+      <LastGenOutput>IbakovModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="IbakovModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>IbakovModel.edmx</DependentUpon>
       <LastGenOutput>IbakovModel.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Resource Include="imagesphoto\B320R5.jpg" />
+    <Resource Include="imagesphoto\D329H3.jpg" />
+    <Resource Include="imagesphoto\D572U8.jpg" />
+    <Resource Include="imagesphoto\F572H7.jpg" />
+    <Resource Include="imagesphoto\F635R4.jpg" />
+    <Resource Include="imagesphoto\G432E4.jpg" />
+    <Resource Include="imagesphoto\G783F5.jpg" />
+    <Resource Include="imagesphoto\H782T5.jpg" />
+    <Resource Include="imagesphoto\J384T6.jpg" />
+    <Resource Include="imagesphoto\А112Т4.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

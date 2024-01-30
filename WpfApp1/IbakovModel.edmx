@@ -272,7 +272,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Ibakov_DBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Order" EntityType="Self.Order" />
           <EntitySet Name="OrderProduct" EntityType="Self.OrderProduct" />
           <EntitySet Name="PickUpPoint" EntityType="Self.PickUpPoint" />
@@ -301,7 +301,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище IbakovModelContainer" CdmEntityContainer="Entities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище IbakovModelContainer" CdmEntityContainer="Ibakov_DBEntities">
           <EntitySetMapping Name="Order">
             <EntityTypeMapping TypeName="IbakovModel.Order">
               <MappingFragment StoreEntitySet="Order">

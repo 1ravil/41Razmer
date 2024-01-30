@@ -13,10 +13,18 @@ namespace WpfApp1
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Entities : DbContext
+    public partial class Ibakov_DBEntities : DbContext
     {
-        public Entities()
-            : base("name=Entities")
+        private static Ibakov_DBEntities _context;
+
+        public static Ibakov_DBEntities GetContext()
+        {
+            if(_context== null)
+                _context = new Ibakov_DBEntities();
+            return _context;
+        }
+        public Ibakov_DBEntities()
+            : base("name=Ibakov_DBEntities")
         {
         }
     
