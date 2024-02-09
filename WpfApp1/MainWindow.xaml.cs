@@ -38,5 +38,10 @@ namespace WpfApp1
                 BtnBack.Visibility = Visibility.Hidden;
             }
         }
+
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.GoBack();
+        }
     }
 }

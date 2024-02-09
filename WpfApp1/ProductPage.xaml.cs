@@ -28,5 +28,10 @@ namespace WpfApp1
 
             ProductListView.ItemsSource = currentProduct;
         }
+
+        private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+
+        }
     }
 }

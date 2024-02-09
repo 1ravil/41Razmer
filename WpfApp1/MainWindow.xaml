@@ -8,13 +8,14 @@
         Title="Ibakov41Razmer" MinHeight="450" MinWidth="800" FontFamily="Comic Sans MS" Icon="Resources/icon.ico">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="75"/>
+            <RowDefinition Height="125"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
-        <Image Source="Resources/logo.png" HorizontalAlignment="Left"></Image>
-        <Button Content="Назад" Name="BtnBack" HorizontalAlignment="Right"></Button>
-        <TextBlock Text="41 размер" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-        <Frame Grid.Row="1" Name="MainFrame" NavigationUIVisibility="Hidden" ContentRendered="MainFrame_ContentRendered"></Frame>
-    </Grid>
+        <Image Source="imagesphoto/logo.png" HorizontalAlignment="Left"></Image>
+        <TextBlock Text="ООО 41 Размер" FontFamily="Comic Sans MS" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        <Button Content="Назад" Name = "BtnBack" Click="BtnBack_Click" HorizontalAlignment="Right"/>
+
+        <Frame Grid.Row="1" Name="MainFrame" NavigationUIVisibility="Hidden" ContentRendered="MainFrame_ContentRendered"/>    </Grid>
 </Window>
