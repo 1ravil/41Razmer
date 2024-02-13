@@ -24,16 +24,34 @@ namespace WpfApp1
         int maxCount = 0;
         List<Product> TableList;
 
-        public ProductPage()
+        public ProductPage(User user)
         {
             InitializeComponent();
 
-            var currentProduct = Ibakov_DBEntities.GetContext().Product.ToList();
+            if (user != null)
+            {
+                FIOTB.Text = user.UserSurname + " " + user.UserName + " " + user.UserPatronymic;
+                switch (user.UserRole)
+                {
+                    case 1:
+                        RoleTB.Text = "Администратор"; break;
+                    case 2:
+                        RoleTB.Text = "Клиент"; break;
+                    case 3:
+                        RoleTB.Text = "Менеджер"; break;
+                }
+                URole.Visibility = Visibility.Visible;
+                RoleTB.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                FIOTB.Text = "Гость";
+                URole.Visibility = Visibility.Hidden;
+                RoleTB.Visibility = Visibility.Hidden;
+            }
 
-            ProductListView.ItemsSource = currentProduct;
-
-            TableList = Ibakov_DBEntities.GetContext().Product.ToList();
-            maxCount = TableList.Count;
+            List<Product> currentProducts = Ibakov_DBEntities.GetContext().Product.ToList();
+            ProductListView.ItemsSource = currentProducts;
 
             MCount.Text = Ibakov_DBEntities.GetContext().Product.ToList().Count.ToString();
 
