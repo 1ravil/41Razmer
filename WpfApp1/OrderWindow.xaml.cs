@@ -32,7 +32,7 @@ namespace WpfApp1
             bool DeliveryStatus = false;
             foreach (var p in products)
             {
-                if (p.ProductQuantityInStock <= 3)
+                if (p.inStock <= 3)
                 {
                     DeliveryStatus = true;
                 }
@@ -79,12 +79,12 @@ namespace WpfApp1
 
             foreach (Product p in selectedProducts)
             {
-                p.ProductQuantityInStock = 1;//Quantity - столбец таблицы product которой нет в бд
+                p.Quantity = 1;//Quantity - столбец таблицы product которой нет в бд
                 foreach (OrderProduct q in selectedOrderProducts)
                 {
                     if (p.ProductArticleNumber == q.ProductArticleNumber)
                     {
-                        p.ProductQuantityInStock = Convert.ToInt32(q.Amount);
+                        p.Quantity = Convert.ToInt32(q.Amount);
                     }
                 }
             }
@@ -97,7 +97,7 @@ namespace WpfApp1
             //определение общей стоимости заказа
             for (int i = 0; i < selectedProducts.Count; i++)
             {
-                Cost += (Convert.ToDouble(selectedProducts[i].ProductCost) - Convert.ToDouble(selectedProducts[i].ProductCost) * Convert.ToDouble(selectedProducts[i].ProductDiscountAmount) / 100) * selectedProducts[i].ProductQuantityInStock;
+                Cost += (Convert.ToDouble(selectedProducts[i].ProductCost) - Convert.ToDouble(selectedProducts[i].ProductCost) * Convert.ToDouble(selectedProducts[i].ProductDiscountAmount) / 100) * selectedProducts[i].Quantity;
             }
 
             TotalCost.Text = Cost.ToString();
@@ -128,7 +128,7 @@ namespace WpfApp1
         {
             Cost = 0;
             var prod = (sender as Button).DataContext as Product;
-            prod.ProductQuantityInStock++;
+            prod.Quantity++;
             var selectedOP = selectedOrderProducts.FirstOrDefault(p => p.ProductArticleNumber == prod.ProductArticleNumber);
             int index = selectedOrderProducts.IndexOf(selectedOP);
             selectedOrderProducts[index].Amount++;
@@ -139,7 +139,7 @@ namespace WpfApp1
             ProductListView.Items.Refresh();
             for (int i = 0; i < selectedProducts.Count; i++)
             {
-                Cost += (Convert.ToDouble(selectedProducts[i].ProductCost) - Convert.ToDouble(selectedProducts[i].ProductCost) * Convert.ToDouble(selectedProducts[i].ProductDiscountAmount) / 100) * selectedProducts[i].ProductQuantityInStock;
+                Cost += (Convert.ToDouble(selectedProducts[i].ProductCost) - Convert.ToDouble(selectedProducts[i].ProductCost) * Convert.ToDouble(selectedProducts[i].ProductDiscountAmount) / 100) * selectedProducts[i].Quantity;
             }
 
             TotalCost.Text = Cost.ToString();
@@ -151,12 +151,12 @@ namespace WpfApp1
         private void BtnMinus_Click(object sender, RoutedEventArgs e)
         {
             var prod = (sender as Button).DataContext as Product;
-            prod.ProductQuantityInStock--;
+            prod.Quantity--;
             Cost = 0;
             var selectedOP = selectedProducts.FirstOrDefault(p => p.ProductArticleNumber == prod.ProductArticleNumber);
             int index = selectedProducts.IndexOf(selectedOP);
 
-            if (prod.ProductQuantityInStock == 0)
+            if (prod.Quantity == 0)
             {
                 selectedOrderProducts[index].Amount = 0;
                 var pr = ProductListView.SelectedItem as Product;
@@ -175,7 +175,7 @@ namespace WpfApp1
             }
             for (int i = 0; i < selectedProducts.Count; i++)
             {
-                Cost += (Convert.ToDouble(selectedProducts[i].ProductCost) - Convert.ToDouble(selectedProducts[i].ProductCost) * Convert.ToDouble(selectedProducts[i].ProductDiscountAmount) / 100) * selectedProducts[i].ProductQuantityInStock;
+                Cost += (Convert.ToDouble(selectedProducts[i].ProductCost) - Convert.ToDouble(selectedProducts[i].ProductCost) * Convert.ToDouble(selectedProducts[i].ProductDiscountAmount) / 100) * selectedProducts[i].Quantity;
             }
             OrderDD.Text = DateTime.Now.AddDays(SetDeliveryDay(selectedProducts)).ToString();
             TotalCost.Text = Cost.ToString();
@@ -188,7 +188,7 @@ namespace WpfApp1
 
 
             var prod = (sender as Button).DataContext as Product;
-            prod.ProductQuantityInStock = 0;
+            prod.Quantity = 0;
             var selectedOP = selectedProducts.FirstOrDefault(p => p.ProductArticleNumber == prod.ProductArticleNumber);
             int index = selectedProducts.IndexOf(selectedOP);
             selectedOrderProducts[index].Amount = 0;
@@ -198,7 +198,7 @@ namespace WpfApp1
 
             for (int i = 0; i < selectedProducts.Count; i++)
             {
-                Cost += (Convert.ToDouble(selectedProducts[i].ProductCost) - Convert.ToDouble(selectedProducts[i].ProductCost) * Convert.ToDouble(selectedProducts[i].ProductDiscountAmount) / 100) * selectedProducts[i].ProductQuantityInStock;
+                Cost += (Convert.ToDouble(selectedProducts[i].ProductCost) - Convert.ToDouble(selectedProducts[i].ProductCost) * Convert.ToDouble(selectedProducts[i].ProductDiscountAmount) / 100) * selectedProducts[i].Quantity;
             }
             TotalCost.Text = Cost.ToString();
             ProductListView.Items.Refresh();
@@ -228,7 +228,7 @@ namespace WpfApp1
             }
 
             Ibakov_DBEntities.GetContext().Order.Add(currentOrder);
-            
+
             try
             {
                 Ibakov_DBEntities.GetContext().SaveChanges();
