@@ -68,10 +68,20 @@
     <Compile Include="AuthPage.xaml.cs">
       <DependentUpon>AuthPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="IbakovModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IbakovModel.Context.tt</DependentUpon>
+    </Compile>
     <Compile Include="IbakovModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>IbakovModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IbakovModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IbakovModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Manager.cs" />
     <Compile Include="Order.cs">
@@ -79,6 +89,9 @@
     </Compile>
     <Compile Include="OrderProduct.cs">
       <DependentUpon>IbakovModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderWindow.xaml.cs">
+      <DependentUpon>OrderWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="PickUpPoint.cs">
       <DependentUpon>IbakovModel.tt</DependentUpon>
@@ -104,20 +117,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="IbakovModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>IbakovModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="IbakovModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>IbakovModel.edmx</DependentUpon>
-    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="OrderWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ProductPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -175,16 +182,6 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="IbakovModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>IbakovModel.edmx</DependentUpon>
-      <LastGenOutput>IbakovModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="IbakovModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>IbakovModel.edmx</DependentUpon>
-      <LastGenOutput>IbakovModel.cs</LastGenOutput>
-    </Content>
     <Resource Include="imagesphoto\B320R5.jpg" />
     <Resource Include="imagesphoto\D329H3.jpg" />
     <Resource Include="imagesphoto\D572U8.jpg" />
@@ -195,6 +192,18 @@
     <Resource Include="imagesphoto\H782T5.jpg" />
     <Resource Include="imagesphoto\J384T6.jpg" />
     <Resource Include="imagesphoto\А112Т4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="IbakovModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>IbakovModel.edmx</DependentUpon>
+      <LastGenOutput>IbakovModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="IbakovModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>IbakovModel.edmx</DependentUpon>
+      <LastGenOutput>IbakovModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

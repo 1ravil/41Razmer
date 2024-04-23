@@ -35,7 +35,9 @@
                 <TextBlock Name="RoleTB"/>
             </StackPanel>
         </StackPanel>
-        
+
+        <Button Content="Заказ" Name="BtnOrder" Click="BtnOrder_Click" Grid.Column="2" Grid.Row="0"/>
+
         <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="кол-во "/>
@@ -62,6 +64,11 @@
                 </ComboBox>
             </StackPanel>
             <ListView Name="ProductListView" Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="2">
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Добавить к заказу" Name="AddInOrder" Click="AddInOrder_Click"/>
+                </ContextMenu>
+            </ListView.ContextMenu>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>

@@ -19,8 +19,11 @@ namespace WpfApp1
 
         public static Ibakov_DBEntities GetContext()
         {
-            if(_context== null)
+            if (_context == null)
+            {
                 _context = new Ibakov_DBEntities();
+            }
+
             return _context;
         }
         public Ibakov_DBEntities()
